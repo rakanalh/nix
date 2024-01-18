@@ -73,6 +73,7 @@ in {
       permittedInsecurePackages = [
         "electron-24.8.6"
         "electron-25.9.0"
+        "adobe-reader-9.5.5"
       ];
     };
   };
@@ -116,7 +117,7 @@ in {
     tdesktop
 
     # Desktop
-    pcmanfm
+    adobe-reader
     i3lock-fancy
     ledger-live-desktop
     gnome.gnome-calculator
@@ -126,6 +127,9 @@ in {
     openra
     obsidian
     speedcrunch
+    sublime3
+    xfce.thunar
+    xfce.tumbler
 
     # Fonts
     nerdfonts
