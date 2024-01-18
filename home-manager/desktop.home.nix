@@ -183,7 +183,7 @@ in {
     alacritty.enable = true;
     doom-emacs = {
       enable = true;
-      doomPrivateDir = ./doom.d;
+      doomPrivateDir = ./.config/doom.d;
     };
     # Better 'cat'
     bat = {
