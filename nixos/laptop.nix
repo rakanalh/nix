@@ -14,21 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-  fileSystems."/run/media/rakan/windows" = {
-    device = "/dev/nvme0n1p3";
-    label = "Windows";
-    fsType = "ntfs";
-    options = [ "rw" "uid=1000" ];
-  };
-  fileSystems."/run/media/rakan/sd1" = {
-    device = "/dev/sda";
-    fsType = "auto";
-    label = "SD1";
-    options = [ "defaults" "user" "rw" "auto" ];
-  };
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = "nixos-laptop"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   
     # Configure network proxy if necessary
@@ -65,13 +53,24 @@
       # Configure keymap in X11
       layout = "us,ara";
       xkbVariant = ",mac";
-      xkbOptions = "grp:alt_space_toggle";
+      xkbOptions = "grp:alt_space_toggle,caps:escape";
 
       videoDrivers = [ "nvidia" ];
 
-      # Enable touchpad support (enabled default in most desktopManager).
-      # libinput.enable = true;
- 
+      libinput = {
+        enable = true;
+
+        # disabling mouse acceleration
+        mouse = {
+          accelProfile = "flat";
+        };
+
+        # disabling touchpad acceleration
+        touchpad = {
+          accelProfile = "flat";
+        };
+      };
+
       desktopManager.xfce.enable = true;
        
       displayManager = {
@@ -92,7 +91,7 @@
     };
  
     plex = {
-      enable = true;
+      enable = false;
       user = "rakan";
       openFirewall = true;
     };
@@ -123,7 +122,7 @@
 
   hardware = {
     bluetooth.enable = true;
-    keyboard.uhk.enable = true;
+    # keyboard.uhk.enable = true;
     keyboard.zsa.enable = true;
     pulseaudio.enable = false;
     opengl.enable = true;
@@ -166,7 +165,7 @@
   users.users.rakan = {
     isNormalUser = true;
     description = "Rakan Alhneiti";
-    extraGroups = [ "audio" "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "audio" "networkmanager" "wheel" "docker" "video" ];
     packages = with pkgs; [
       firefox
     ];
@@ -187,6 +186,7 @@
      git
      direnv
      polkit_gnome
+     xorg.xbacklight
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -199,11 +199,12 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.light.enable = true;
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -87,15 +87,16 @@ in {
       ".config/awesome".source = (pkgs.fetchFromGitHub {
         owner = "rakanalh";
         repo = "awesome-config";
-        rev = "5f7f1f4066a9c00f6971e2c829630f510745a00c";
+        rev = "a37922f8294291a9945ee7438a65a7ceba83a77f";
         sha256 = "sha256-ugb/lJXNDzIbz+4g/ZzWKwdh8yJeasf4pB0y51pNOUQ=";
         fetchSubmodules = true;
       });
       ".Xresources".source = ./.config/Xresources;
-      # ".password-store".source = (builtins.fetchGit {
-      #   url = "ssh://git@github.com/rakanalh/password-store.git";
-      #   ref = "master";
-      # });
+      ".password-store".source = (builtins.fetchGit {
+        url = "ssh://git@github.com/rakanalh/password-store.git";
+        ref = "master";
+        rev = "c9b3d993b15653726d0482163330677f54897c71";
+      });
     };
     sessionVariablesExtra = ''
       export SSH_AUTH_SOCK="$(${gpgPkg}/bin/gpgconf --list-dirs agent-ssh-socket)"
@@ -106,17 +107,13 @@ in {
   home.packages = with pkgs; [
     # Browser
     google-chrome
-    nyxt
-    at-spi2-atk
 
     # Chat
-    element-desktop
     discord
     slack
     tdesktop
 
     # Desktop
-    pcmanfm
     i3lock-fancy
     ledger-live-desktop
     gnome.gnome-calculator
@@ -126,6 +123,8 @@ in {
     openra
     obsidian
     speedcrunch
+    xfce.thunar
+    xfce.tumbler
 
     # Fonts
     nerdfonts
