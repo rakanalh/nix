@@ -16,8 +16,7 @@
     # Doom Emacs
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
+    hardware.url = "github:nixos/nixos-hardware";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
@@ -73,6 +72,8 @@
       nixos-laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+          inputs.hardware.nixosModules.lenovo-thinkpad-x1-extreme
+          inputs.hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen2
           # > Our main nixos configuration file <
           ./nixos/laptop.nix
         ];
