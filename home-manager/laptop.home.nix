@@ -115,7 +115,7 @@ in {
 
     # Desktop
     i3lock-fancy
-    ledger-live-desktop
+    # ledger-live-desktop
     gnome.gnome-calculator
     uhk-agent
     qtpass
@@ -145,6 +145,7 @@ in {
 
     # Cli Apps
     awscli
+    brightnessctl
     docker-compose
     htop
     neofetch
