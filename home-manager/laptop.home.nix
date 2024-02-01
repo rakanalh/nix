@@ -136,6 +136,7 @@ in {
     jq
     nodejs
     ripgrep
+    sccache
     silver-searcher
     sqlite
     wget
@@ -525,7 +526,7 @@ in {
       oh-my-zsh.theme = "fox";
       envExtra = ''
         PATH=''${PATH}:~/.cargo/bin
-        RUSTC_WRAPPER=~/.cargo/bin/cachepot
+        RUSTC_WRAPPER=~/.cargo/bin/sccache
 
         bindkey -e
         bindkey '[C' forward-word
