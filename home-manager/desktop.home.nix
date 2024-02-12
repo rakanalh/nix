@@ -107,7 +107,7 @@ in {
   home.packages = with pkgs; [
     # Browser
     google-chrome
-    nyxt
+    unstable.nyxt
     at-spi2-atk
 
     # Chat
