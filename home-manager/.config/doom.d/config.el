@@ -47,6 +47,7 @@
   `(org-document-title  :height 2.0 :underline nil))
 
 (setenv "SSH_AUTH_SOCK" "/run/user/1000/gnupg/S.gpg-agent.ssh")
+(setenv "PATH" (concat (getenv "PATH") ":/home/rakan/.cargo/bin"))
 
 ;; (custom-set-faces! '(window-divider :foreground "#363636"))
 (setq auth-sources '("~/.authinfo"))

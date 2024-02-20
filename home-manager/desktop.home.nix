@@ -100,6 +100,7 @@ in {
     };
     sessionVariablesExtra = ''
       export SSH_AUTH_SOCK="$(${gpgPkg}/bin/gpgconf --list-dirs agent-ssh-socket)"
+      export PATH=$PATH:~/.cargo/bin
     '';
   };
 
@@ -107,6 +108,7 @@ in {
   home.packages = with pkgs; [
     # Browser
     google-chrome
+    qutebrowser
     unstable.nyxt
     at-spi2-atk
 
