@@ -88,8 +88,8 @@ in {
       ".config/awesome".source = (pkgs.fetchFromGitHub {
         owner = "rakanalh";
         repo = "awesome-config";
-        rev = "5f7f1f4066a9c00f6971e2c829630f510745a00c";
-        sha256 = "sha256-ugb/lJXNDzIbz+4g/ZzWKwdh8yJeasf4pB0y51pNOUQ=";
+        rev = "69cfd3d97ff73e8a9f2a6fec44be15aab4b949ea";
+        sha256 = "sha256-EN3pzh0gyaAImPUh03EIa9BHm5POzxYwRKeVp1VmoaA=";
         fetchSubmodules = true;
       });
       ".Xresources".source = ./.config/Xresources;
@@ -108,9 +108,7 @@ in {
   home.packages = with pkgs; [
     # Browser
     google-chrome
-    qutebrowser
-    unstable.nyxt
-    at-spi2-atk
+    unstable.vivaldi
 
     # Chat
     element-desktop
@@ -534,6 +532,7 @@ in {
       envExtra = ''
         PATH=''${PATH}:~/.cargo/bin
         RUSTC_WRAPPER=~/.cargo/bin/sccache
+        WEBKIT_DISABLE_COMPOSITING_MODE=1
 
         bindkey -e
         bindkey '[C' forward-word
