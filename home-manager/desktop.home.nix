@@ -88,8 +88,8 @@ in {
       ".config/awesome".source = (pkgs.fetchFromGitHub {
         owner = "rakanalh";
         repo = "awesome-config";
-        rev = "69cfd3d97ff73e8a9f2a6fec44be15aab4b949ea";
-        sha256 = "sha256-EN3pzh0gyaAImPUh03EIa9BHm5POzxYwRKeVp1VmoaA=";
+        rev = "566c3036a3c898634d6a395ed7223c742b7b56d1";
+        sha256 = "sha256-EUUFPNGG5jbjj/3D8cpVOYf1VqSSEtGqWyP4NAORWXA=";
         fetchSubmodules = true;
       });
       ".Xresources".source = ./.config/Xresources;
@@ -135,6 +135,13 @@ in {
     nerdfonts
     iosevka
 
+    # Global Rust deps
+    clang
+    openssl
+    openssl.dev
+    pkg-config
+    rustup
+
     # Dev tools
     go
     gopls
@@ -146,6 +153,7 @@ in {
     sqlite
     wget
     unzip
+    vagrant
     zip
 
     # Cli Apps
@@ -533,6 +541,7 @@ in {
         PATH=''${PATH}:~/.cargo/bin
         RUSTC_WRAPPER=~/.cargo/bin/sccache
         WEBKIT_DISABLE_COMPOSITING_MODE=1
+        PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
 
         bindkey -e
         bindkey '[C' forward-word

@@ -161,6 +161,7 @@
   };
   
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rakan = {
@@ -172,6 +173,7 @@
     ];
     shell = pkgs.zsh;
   };
+  users.extraGroups.vboxusers.members = [ "rakan" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
